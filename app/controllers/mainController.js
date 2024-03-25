@@ -17,8 +17,12 @@ const mainController = {
     try{
       const figurineFound = await dataMapper.getOneFigurine(figurineId);
 
+      const reviews = await dataMapper.getAllReviewsByFigurine(parseInt(figurineId));
+
+      console.log(reviews);
+
     if (figurineFound){
-      res.render('article', {figurineFound});
+      res.render('article', {figurineFound, reviews});
     } else{
       res.status(404).send('404 Not Found');
     }
