@@ -10,36 +10,36 @@
 
 	<div class="col-lg-9">
 
-	<div class="row">
-		<div class="col-lg-6">
-		<img class="" src="/images/<%= figurineFound.name.toLowerCase() %>.png" alt="">
-		</div>
-
-		<div class="col-lg-6">
-		<div class="card">
-			<div class="card-body">
-				<h3 class="card-title">
-					<%= figurineFound.name %>
-				<div class="badge badge-pill badge-gentil"><%= figurineFound.category %></div>
-				</h3>
-				<p class="card-text">Taille réelle : <%= figurineFound.size %>cm</p>
-				<p class="card-text"><%= figurineFound.description %></p>
-				<p class="card-text">3
-				Note moyenne : &#9733; &#9733; &#9733; &#9733; &#9734;
-				<br>
-				<a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
-				</p>
-				<h5>$<%= figurineFound.price %></h5>
-				<p class="card-text">
-				<a href="#" class="link-add-bookmarks">+ Ajouter aux favoris</a>
-				</p>
+		<div class="row">
+			<div class="col-lg-6">
+			<img class="" src="/images/<%= figurineFound.name.toLowerCase() %>.png" alt="">
 			</div>
-		</div>
-		
-		</div>
 
-	</div>
-	<!-- /.row -->
+			<div class="col-lg-6">
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-title">
+						<%= figurineFound.name %>
+					<div class="badge badge-pill badge-gentil"><%= figurineFound.category %></div>
+					</h3>
+					<p class="card-text">Taille réelle : <%= figurineFound.size %>cm</p>
+					<p class="card-text"><%= figurineFound.description %></p>
+					<p class="card-text">3
+					Note moyenne : &#9733; &#9733; &#9733; &#9733; &#9734;
+					<br>
+					<a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
+					</p>
+					<h5>$<%= figurineFound.price %></h5>
+					<p class="card-text">
+					<a href="#" class="link-add-bookmarks">+ Ajouter aux favoris</a>
+					</p>
+				</div>
+			</div>
+			
+			</div>
+
+		</div>
+		<!-- /.row -->
 
 	</div>
 	<!-- /.col-lg-9 -->

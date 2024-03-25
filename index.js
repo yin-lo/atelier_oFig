@@ -2,6 +2,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const session = require('express-session');
 
 // on importe le router
 const router = require('./app/router');
@@ -20,6 +21,12 @@ app.use(express.static('public'));
 
 // servir les fichiers statiques qui sont dans "integration"
 app.use(express.static('integration'));
+
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'keyboard cat',
+  resave: true,
+  saveUninitialized: true,
+}));
 
 // routage !
 app.use(router);
