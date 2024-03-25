@@ -12,8 +12,19 @@ const mainController = {
 	},
 
 	// méthode pour la page article
-	articlePage: (req, res) => {
-		res.render('article');
+	async articlePage (req, res) {
+    const figurineId = req.params.id;
+    try{
+      const figurineFound = await dataMapper.getOneFigurine(figurineId);
+
+    if (figurineFound){
+      res.render('article', {figurineFound});
+    } else{
+      res.status(404).send('404 Not Found');
+    }
+    } catch (error) {
+      res.status(500).send('Erreur serveur');
+    }
 	},
 };
 
