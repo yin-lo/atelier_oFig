@@ -1,3 +1,5 @@
+const dataMapper = require('../dataMapper');
+
 const mainController = {
 
   // méthode pour la page d'accueil
