@@ -23,9 +23,13 @@ app.use(express.static('public'));
 app.use(express.static('integration'));
 
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'keyboard cat',
+  secret: process.env.SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
+  cookie: {
+    secure: false,
+    maxAge: (1000*60*60)
+  }
 }));
 
 // routage !
