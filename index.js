@@ -12,6 +12,12 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+// utilisation avec ejs
+app.set('view engine', 'ejs');  
+app.set('views', './app/views');
+
+app.use(express.static('public'));
+
 // servir les fichiers statiques qui sont dans "integration"
 app.use(express.static('integration'));
 
