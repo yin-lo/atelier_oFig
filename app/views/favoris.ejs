@@ -20,20 +20,20 @@
 		<tbody>
 			<% favoris.forEach(favori => { %>
 				<tr>
-				<td>
-					<img class="img-thumbnail img-cart-list" src="/images/<%= favori.name.toLowerCase() %>.png" alt="">
-					<div class="item-description">
-						<h5 class="item-title"><%= favori.name%></h5>
-					</div>
-				</td>
+					<td>
+						<img class="img-thumbnail img-cart-list" src="/images/<%= favori.name.toLowerCase() %>.png" alt="">
+						<div class="item-description">
+							<h5 class="item-title"><%= favori.name%></h5>
+						</div>
+					</td>
 
-				<td>
-					<p class="item-subtotal">$<%= favori.price%></p>
-				</td>
+					<td>
+						<p class="item-subtotal">$<%= favori.price%></p>
+					</td>
 
-				<td>
-					<a href="/bookmarks/delete/<%= favori.id %>">Enlever de la liste</a>
-				</td>
+					<td>
+						<a href="/bookmarks/delete/<%= favori.id %>">Enlever de la liste</a>
+					</td>
 				</tr>
 			<% }) %>
 
@@ -41,11 +41,11 @@
 		</table>
 
 		<div class="row">
-		<div class="col text-right">
-			<a class="btn btn-success" href="/">
-				Retour à l'accueil
-			</a>
-		</div>
+			<div class="col text-right">
+				<a class="btn btn-success" href="/">
+					Retour à l'accueil
+				</a>
+			</div>
 		</div>
 
 	</div>

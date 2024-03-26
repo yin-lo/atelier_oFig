@@ -5,30 +5,28 @@ const mainController = {
 	async homePage(req, res) {
 		try {
 			const figurines = await dataMapper.getAllFigurines();
-      res.render('accueil', { figurines });
+			res.render('accueil', { figurines });
 		} catch (error) {
 			res.status(500).send('Erreur serveur');
 		}
 	},
 
 	// méthode pour la page article
-	async articlePage (req, res) {
-    const figurineId = req.params.id;
-    try{
-      const figurineFound = await dataMapper.getOneFigurine(figurineId);
+	async articlePage(req, res) {
+		const figurineId = req.params.id;
+		try {
+			const figurineFound = await dataMapper.getOneFigurine(figurineId);
 
-      const reviews = await dataMapper.getAllReviewsByFigurine(parseInt(figurineId));
+			const reviews = await dataMapper.getAllReviewsByFigurine(parseInt(figurineId));
 
-      console.log(reviews);
-
-    if (figurineFound){
-      res.render('article', {figurineFound, reviews});
-    } else{
-      res.status(404).send('404 Not Found');
-    }
-    } catch (error) {
-      res.status(500).send('Erreur serveur');
-    }
+			if (figurineFound) {
+				res.render('article', { figurineFound, reviews });
+			} else {
+				res.status(404).send('404 Not Found');
+			}
+		} catch (error) {
+			res.status(500).send('Erreur serveur');
+		}
 	},
 };
 
