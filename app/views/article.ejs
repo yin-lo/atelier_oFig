@@ -20,7 +20,7 @@
 					<div class="card-body">
 						<h3 class="card-title">
 							<%= figurineFound.name %>
-						<div class="badge badge-pill badge-gentil"><%= figurineFound.category %></div>
+						<div class="badge badge-pill badge-<%= figurineFound.category.toLowerCase() %>"><%= figurineFound.category %></div>
 						</h3>
 						<p class="card-text">Taille réelle : <%= figurineFound.size %>cm</p>
 						<p class="card-text"><%= figurineFound.description %></p>

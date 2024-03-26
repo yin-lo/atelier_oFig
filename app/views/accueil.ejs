@@ -15,7 +15,7 @@
           <div class="card h-100">
             <a href="/article/<%=figurine.id%>">
               <img class="card-img-top" src="/images/<%= figurine.name.toLowerCase() %>.png" alt="">
-              <div class="badge-category badge badge-pill badge-gentil"><%= figurine.category %></div>
+              <div class="badge-category badge badge-pill badge-<%= figurine.category.toLowerCase() %>"><%= figurine.category %></div>
             </a>
             <div class="card-body">
               <h4 class="card-title">
