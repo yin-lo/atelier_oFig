@@ -6,22 +6,22 @@
 
 <%- include('./partials/leftMenu') %>
 
-    <div class="col-lg-9">
+    <section class="col-lg-9">
 
       <div class="row">
 
       <% figurines.forEach(figurine => { %>
-        <div class="col-lg-4 col-md-6 mb-4">
+        <article class="col-lg-4 col-md-6 mb-4">
           <div class="card h-100">
             <a href="/article/<%=figurine.id%>">
               <img class="card-img-top" src="/images/<%= figurine.name.toLowerCase() %>.png" alt="">
               <div class="badge-category badge badge-pill badge-<%= figurine.category.toLowerCase() %>"><%= figurine.category %></div>
             </a>
             <div class="card-body">
-              <h4 class="card-title">
+              <h2 class="card-title h4">
                 <a href="/article/<%=figurine.id%>"><%= figurine.name %></a>
-              </h4>
-              <h5>$<%= figurine.price %></h5>
+              </h2>
+              <strong class="h5 d-block">$<%= figurine.price %></strong>
               <p class="card-text"><%= figurine.description %></p>
             </div>
             <div class="card-footer">
@@ -29,19 +29,19 @@
               <a href="/bookmarks/add/<%=figurine.id%>" class="link-add-bookmarks">+ Ajouter aux favoris</a>
             </div>
           </div>
-        </div>
+        </article>
        <% }) %>
 
       </div>
       <!-- /.row -->
 
-    </div>
+    </section>
     <!-- /.col-lg-9 -->
 
   </div>
   <!-- /.row -->
 
-</div>
+</main>
 <!-- /.container -->
 
 <%- include('./partials/footer') %>

@@ -6,11 +6,27 @@
 
 <%- include('./partials/leftMenu') %>
 
-	<!-- /.col-lg-3 -->
+	<script type="application/ld+json">
+		{
+		"@context": "https://schema.org/",
+		"@type": "Product",
+		"name": "<%= figurineFound.name %>",
+		"description": "<%= figurineFound.description %>",
+		"image": "http://localhost:3000/images/<%= figurineFound.name.toLowerCase() %>.png",
+		"offers":{
+			"@type": "Offer",
+			"priceCurrency": "USD",
+			"price": "<%= figurineFound.price %>",
+			"itemCondition": "https://schema.org/NewCondition",
+			"priceValidUntil" : "<%= new Date(new Date().getFullYear(), 11, 31, 23, 59, 59, 999).toISOString(); %>"
+			}
+		}
+	</script>
 
-	<div class="col-lg-9">
 
-		<div class="row">
+	<main class="col-lg-9">
+
+		<article class="row">
 			<div class="col-lg-6">
 				<img class="" src="/images/<%= figurineFound.name.toLowerCase() %>.png" alt="">
 			</div>
@@ -18,10 +34,10 @@
 			<div class="col-lg-6">
 				<div class="card">
 					<div class="card-body">
-						<h3 class="card-title">
+						<h2 class="card-title h3 d-inline">
 							<%= figurineFound.name %>
-						<div class="badge badge-pill badge-<%= figurineFound.category.toLowerCase() %>"><%= figurineFound.category %></div>
-						</h3>
+						</h2>
+						<h3 class="h3 badge badge-pill badge-<%= figurineFound.category.toLowerCase() %>"><%= figurineFound.category %></h3>
 						<p class="card-text">Taille réelle : <%= figurineFound.size %>cm</p>
 						<p class="card-text"><%= figurineFound.description %></p>
 						<p class="card-text">3
@@ -29,7 +45,7 @@
 						<br>
 						<a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
 						</p>
-						<h5>$<%= figurineFound.price %></h5>
+						<strong class="h5 d-block">$<%= figurineFound.price %></strong>
 						<p class="card-text">
 						<a href="/bookmarks/add/<%=figurineFound.id%>" class="link-add-bookmarks">+ Ajouter aux favoris</a>
 						</p>
@@ -38,10 +54,10 @@
 			
 			</div>
 
-		</div>
+		</article>
 		<!-- /.row -->
 
-	</div>
+	</main>
 	<!-- /.col-lg-9 -->
 
 </div>
