@@ -1,55 +1,50 @@
-<%- include('./partials/head') %>
+<%- include('partials/header') %>
 
-<%- include('./partials/navigation') %>
+  <!-- Page Content -->
+  <div class="container container-main">
 
-<%- include('./partials/leftMenu') %>
+      <div class="row">
+        <div class="col">
+          <h3 class="text-center">Votre liste de préférences</h3>
 
-<!-- Page Content -->
-<div class="container container-main">
+          <table class="table">
+            <thead>
+              <th>Article</th>
+              <th>Prix HT</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <% figurines.forEach(figurine => { %>
+                <tr>
+                  <td>
+                    <img class="img-thumbnail img-cart-list" src="/images/<%= figurine.name.toLowerCase() %>.png" alt="">
+                    <div class="item-description">
+                        <h5 class="item-title"><%= figurine.name %></h5>
+                    </div>
+                  </td>
+  
+                  <td>
+                    <p class="item-subtotal">$<%= figurine.price %></p>
+                  </td>
+  
+                  <td>
+                    <a href="/bookmarks/delete/<%= figurine.id %>">Enlever de la liste</a>
+                  </td>
+                </tr>
+              <% }) %>
+          </table>
 
-	<div class="row">
-	<div class="col">
-		<h3 class="text-center">Votre liste de préférences</h3>
+          <div class="row">
+            <div class="col text-right">
+                <a class="btn btn-success" href="/">
+                  Retour à l'accueil
+                </a>
+            </div>
+          </div>
 
-		<table class="table">
-		<thead>
-			<th>Article</th>
-			<th>Prix HT</th>
-			<th></th>
-		</thead>
-		<tbody>
-			<% favoris.forEach(favori => { %>
-				<tr>
-					<td>
-						<img class="img-thumbnail img-cart-list" src="/images/<%= favori.name.toLowerCase() %>.png" alt="">
-						<div class="item-description">
-							<h5 class="item-title"><%= favori.name%></h5>
-						</div>
-					</td>
-
-					<td>
-						<p class="item-subtotal">$<%= favori.price%></p>
-					</td>
-
-					<td>
-						<a href="/bookmarks/delete/<%= favori.id %>">Enlever de la liste</a>
-					</td>
-				</tr>
-			<% }) %>
+        </div>
+      </div>
+  </div>
 
 
-		</table>
-
-		<div class="row">
-			<div class="col text-right">
-				<a class="btn btn-success" href="/">
-					Retour à l'accueil
-				</a>
-			</div>
-		</div>
-
-	</div>
-	</div>
-</div>
-
-<%- include('./partials/footer') %>
+<%- include('partials/footer') %>

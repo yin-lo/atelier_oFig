@@ -1,46 +1,66 @@
 const dataMapper = require('../dataMapper');
 
 const bookmarksController = {
-	// méthode pour afficher les favoris
-	async bookmarksPage(req, res) {
-		if (!req.session.bookmarks) {
-			req.session.bookmarks = [];
-		}
-		//  res.redirect('/');
-		res.render('favoris', { favoris: req.session.bookmarks });
-	},
 
-	async addBookmark(req, res) {
-		try {
-			if (!req.session.bookmarks) {
-				req.session.bookmarks = [];
-			}
+  // méthode pour afficher les favoris
+  bookmarksPage(request, response) {
+    response.render('favoris', {
+      // Si je n'ai pas définis de bookmarks dans ma session, je mets un tableau vide
+      figurines: request.session.bookmarks || [],
+    });
+  },
 
-			const favoriId = req.params.id;
+  async addBookmark(request, response) {
+    try {
+      // ici on va ajouter un favori
+    // Si je n'ai pas de bookmarks dans ma session
+      if (!request.session.bookmarks) {
+      // Alors j'initialise un tableau vide
+        request.session.bookmarks = [];
+      }
 
-			const found = req.session.bookmarks.find((bookmark) => parseInt(favoriId) === bookmark.id);
+      // Je regarde si j'ai déjà cet article en favori
+      const figurineId = Number(request.params.id);
+      // Est ce que j'ai une figurine dans mon tableau de bookmarks
+      // dont l'id est celui que je viens de recevoir en paramètre
+      const figurineFound = request.session.bookmarks
+        // La fonction en argument du find doit retourner une valeur (thruthy ou falsy)
+        .find((figurine) => figurine.id === figurineId);
 
-			if (!found) {
-				const fav = await dataMapper.getOneFigurine(favoriId);
-				req.session.bookmarks.push(fav);
-			}
+      // Si je n'ai pas trouvé la figurine
+      if (!figurineFound) {
+      // Je vais chercher la figurine dans la base de données
+        const figurine = await dataMapper.getOneFigurine(figurineId);
 
-			res.redirect('/bookmarks');
+        // Si j'ai trouvé la figurine en bdd, je l'ajoute à mon tableau de bookmarks
+        if (figurine) {
+          request.session.bookmarks.push(figurine);
+        }
+      }
 
-		} catch (error) {
-			console.error(error);
-			response.status(500).send("Erreur lors de l'ajout du favori");
-		}
-	},
-	async deleteBookmark(req, res) {
-		const favoriId = req.params.id;
+      // Je redirige vers la page des favoris
+      response.redirect('/bookmarks');
+    } catch (error) {
+      console.error(error);
+      response.status(500).send('Erreur lors de l\'ajout du favori');
+    }
+  },
 
-		const result = req.session.bookmarks.filter((favori) => parseInt(favoriId) !== favori.id);
+  deleteBookmark(request, response) {
+    // ici on va supprimer un favori
+    // Je récupère l'id de la figurine à supprimer
+    const figurineId = Number(request.params.id);
 
-		req.session.bookmarks = result;
+    // Je filtre les favoris pour retirer celui qui a l'id que je veux supprimer
+    request.session.bookmarks = request.session.bookmarks
+      // On filtre les figurines pour ne garder que celles
+      // dont l'id est différent de celui qu'on veut supprimer
+      .filter((figurine) => figurine.id !== figurineId);
 
-		res.redirect('/bookmarks');
-	},
+    // Je redirige vers la page des favoris
+    response.redirect('/bookmarks');
+  },
+
 };
 
 module.exports = bookmarksController;
