@@ -1,7 +1,7 @@
 {
-  "name": "s04e06-atelier-ofig-aspitrine",
+  "name": "Atelier-ofig",
   "version": "1.0.0",
-  "description": "## Étape 1: Mise en place",
+  "description": "WebSite for a figurine shop",
   "main": "index.js",
   "scripts": {
     "dev": "node --watch index.js"
